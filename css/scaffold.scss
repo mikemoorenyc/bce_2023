@@ -1,0 +1,22 @@
+html {
+    width: 100%;
+    overflow-x:hidden;
+}
+body {
+    color: var(--screen-text);
+    background: var(--screen-bg);
+    font-family: var(--font-mono);
+   
+    position: relative;
+}
+a,.a {
+    color: var(--blue-accent);
+    text-decoration: underline;
+}
+*,*:before,*:after {
+    box-sizing:border-box;
+}
+img, svg {
+	display: block;
+    max-width: 100%;
+}

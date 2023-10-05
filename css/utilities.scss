@@ -1,0 +1,20 @@
+.reading-section {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.5
+}
+.translucent-pane {
+    background: var(--btn-bg);
+    color: var(--screen-text);
+    border: 1px solid currentColor;
+    padding: var(--gutter);
+}
+.is-hidden {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px,1px,1px,1px);
+}

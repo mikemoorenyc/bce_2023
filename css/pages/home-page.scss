@@ -1,0 +1,29 @@
+.homepage-container {
+    padding: 48px 16px 48px; 
+    text-align: center;
+}
+h1.homepage-logo {
+    width: 288px;
+    height: 133px;
+    background-size: contain;
+    background-position:center center;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    font-size: .0001em;
+    margin: 0 auto; 
+}
+.homepage-nav-container {
+    display:inline-block;
+}
+.homepage-nav-button {
+    padding: 0 16px;
+    height: 48px;
+    line-height: 48px;
+    font-size:22px; 
+    display:block;
+    margin-bottom: var(--gutter)
+}
+.homepage-copy {
+    text-align: left;
+    margin-top: calc(var(--gutter) / 2); 
+}

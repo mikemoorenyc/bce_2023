@@ -1,0 +1,107 @@
+.filter-options {
+    /*display:flex; 
+    align-items: center;
+    border: 1px solid currentColor;
+    border-width: 1px 0;
+    padding: 8px 0;
+    position:sticky;
+    top: 64px;
+    background:var(--screen-bg);*/
+    &-opener {
+        margin-left: var(--gutter);
+        display: flex;
+        align-items: center;
+        position:sticky;
+        top: 24px;
+        &-icon {
+            margin-right: 6px;
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+    
+    &-items {
+        &-container {
+            padding: var(--gutter);
+        }
+    }
+    &-item {
+        margin-bottom: var(--gutter);
+    }
+   
+    &-button {
+        text-transform: uppercase;
+        margin-right: var(--gutter);
+        white-space: nowrap;
+
+    }
+    position:fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x:hidden;
+    overflow-y: auto; 
+    z-index:99;
+    background: var(--screen-bg);
+    display:none;
+    &__opened {
+        display:block;
+    }
+}
+.sample-thumbnails  {
+    margin-top: var(--gutter);
+}
+.sample-thumbnail {
+    transition: opacity .2s;
+    border-top: 1px solid currentColor;
+    &-img {
+        width:100%;
+        object-fit: cover;
+        object-position: center center;
+        aspect-ratio: 1/1;
+    }
+    &__removing {
+        opacity: 0;
+    }
+    &__removed {
+        display:none;
+        opacity: 0;
+    }
+}
+.pan-zoom-container {
+    position:fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background:var(--screen-bg);
+    display:none;
+    &__open {
+        display:block;
+    }
+    &-img {
+        /*position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        max-width: 100%;
+        max-height: 100%;*/
+        opacity: 0;
+        &--loaded {
+            opacity: 1;
+        }
+        max-width: none;
+        &__small {
+           position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            max-width: 100%;
+            max-height: 100%; 
+        }
+    }
+}

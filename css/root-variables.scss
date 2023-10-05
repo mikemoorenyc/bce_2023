@@ -1,0 +1,12 @@
+:root {
+    --btn-bg: rgba(0,0,0,.85);
+    --screen-text: white; 
+    --screen-bg: #0E0E0E;
+    --blue-accent: #007DD7;
+    --font-mono:  'IBM Plex Mono', monospace;
+    --font-serif: 'IBM Plex Serif', serif;
+    --gutter: 16px;
+    --half-gutter : calc(var(--gutter) / 2);
+    --animation-speed: .2s;
+    --error-color: #F2B8B5;
+}
