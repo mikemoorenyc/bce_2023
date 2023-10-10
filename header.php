@@ -17,14 +17,14 @@ $card_url = get_og_img();
 <head>
 <?
 $pages = get_pages();
+
 if($pages){
     foreach($pages as $p) {
-        //removeIf(development)
-        ?>
         
+        ?>
         <link rel="prefetch" href="<?=get_permalink($p->ID);?>" />
         <?php
-        //endRemoveIf(development)
+        
     }
 }
 ?>
@@ -78,42 +78,39 @@ if($card_url) {
 
 </head>
 <body>
-<?php
-if(!is_front_page()) {
-    ?>
+<a href="#main">Skip to content</a>
+<div id="header-test"></div>
 <header>
-    <a class="header-logo" href="<?=get_home_url();?>">
-        <img src="<?=THEME_URL."/assets/interior_logo.svg"?>" title="<?=get_bloginfo('name');?>" alt="Logo for <?=get_bloginfo('name');?>"/><span class="is-hidden"><?=get_bloginfo('name');?></span>
-    </a>
-    <?php
-    $btn_attributes = 'class="menu-opener" data-open-text="Menu" data-close-text="Close"';
-    $btn_initial_text = "Menu";
-    ?>
+    <a href="<?= get_home_url()?>" class="lockup">
+        <span class="spinner" aria-hidden="true"></span>
+        <span class="lockup_title"><?= get_bloginfo("")?></span>
+        <span class="lock_tagline"><?= get_bloginfo("description")?></span>
+    </div>
+    <?php $nav = wp_get_nav_menu_items('Main Menu');?>
+    <?php if($nav) {
+        ?>
+    <nav class="header_nav">
+        <ul class="header_nav_ul">
+        <?php
+        foreach($nav as $n) {
+            
+            ?>
+            <li class="header_nav_ul_li <?= (get_permalink($post->ID) == $n->url)? "header_nav_ul--active": ""?>"><a href="<?=$n->url?>"><span><?=$n->title?></span></a></li>
+            <?php
+        }
+
+        ?>
+
+        </ul>
+    </nav>
+
+        <?php
+    }?>
     
-    <button class="menu-opener" data-open-text="Menu" data-close-text="Close">
-        <span class="button-base button-base_x-sm menu-opener-inner ">
-            <span aria-hidden="true" role="none" class="menu-opener-icon menu-opener-open"><? include "assets/menu.svg";?></span>
-            <span aria-hidden="true" role="none" class="menu-opener-icon menu-opener-close"><? include "assets/cancel.svg";?></span>
-            <span class="menu-opener-text">Menu</span>
-        </span>
-    </button> 
-    <div class="main-menu-nav-container">
-    <? 
-    $nav_container_classes = "main-menu-nav"; 
-    $nav_button_classes = "homepage-nav-button";
-    $nav_items = wp_get_nav_menu_items("main_menu");
-    include "partials/components/big_nav_list.php";?></div> 
+
 </header>
-    <?php
-}
 
-?>
-<main>
-<?php 
-if(!is_front_page()) {
-    ?>
 
-    <h1 class="page_title"><?=get_the_title();?></h1><?php
-}
-?>
+<div id="footer-grid-wrap">
+    <main id="main-content-container">
 

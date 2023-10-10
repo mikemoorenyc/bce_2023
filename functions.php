@@ -15,4 +15,23 @@ foreach (["/admin_helpers","/endpoints"] as $directory_url) {
         }
     }
 }
+$utility_functions = [];
+$util_iter = new DirectoryIterator(dirname(__FILE__)."/utility_functions");
+foreach ($util_iter as $file) {
+    if(!$file->isDot() && !$file->isDir()) {
+        include $file->getRealPath(); 
+        $fn = explode(".",$file->getFilename())[0];
+        $utility_functions[$fn] = ${$fn};
+    }
+}
+$components = []; 
+$component_iter = new DirectoryIterator(dirname(__FILE__)."/components");
+foreach($component_iter as $file) {
+    if(!$file->isDot() && !$file->isDir()) {
+        include $file->getRealPath(); 
+        $fn = explode(".",$file->getFilename())[0];
+        $components[$fn] = ${$fn};
+    }
+}
+
 ?>

@@ -34,7 +34,7 @@ const wpdump =() => {
     return src(wpdumpPath)
         .pipe(dest(config.directory))
 }
-const templatePath = ["./*.php", "./*.html", "./partials/**/*","./admin_helpers/**/*","./endpoints/**/*"];
+const templatePath = ["./*.php", "./*.html", "./partials/**/*","./admin_helpers/**/*","./endpoints/**/*","utility_functions/**/*","components/**/*"];
 const templates = () => {
     return src(templatePath,{base:"."})
         .pipe(strip({production:isProd,development:!isProd}))

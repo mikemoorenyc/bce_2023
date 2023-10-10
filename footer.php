@@ -1,44 +1,60 @@
 </main>
-<div id="live-data-container"></div>
-<footer>
 
-<?php
+<footer class="footer">
+<?php $nav = wp_get_nav_menu_items("Main Menu");?>
+<?php if ($nav):?>
+<nav>
+  Site navigation
+  <ul>
+<?php foreach($nav as $n):?>
+    <li><a href="<?= $n->url?>"><?=$n->title;?></a></li>
+<?php endforeach;?>
 
-(function($links) {
-  if(!$links) {
-    return; 
-  }
-  $split = array_map(function($s) {
-    $cut = explode(",",$s);
-    if(count($cut) < 2) {
-     return ;  
-    }
-    
-    return array_map(fn($i) => trim($i) , $cut); 
-  },preg_split("/\\r\\n|\\r|\\n/", $links));
-  
-  if(!count($split)) {
-    return; 
-  }
-  
-  ?>
-
-  <div class="footer-social-links-container">
-  <?php
-  foreach($split as $s) {
-    ?>
-    <a class="footer-social-links" href="<?= $s[1];?>" target="_blank"><?=$s[0];?></a>
-  <?php
-  }
-  ?>
-  </div>
-
-
-  <?
+  </ul>
+</nav>
+<?php endif?>
+<?php $social = wp_get_nav_menu_items("Social Media");?>
+<?php if($social):?>
+<div>
+  Social media
+  <ul>
+  <?php foreach($social as $s):?>
  
+    <li><a target="<?=$s->target;?>" href="<?=$s->url?>"><?= $s->title?></a></li>
+
+  <?php endforeach?>
+
+  </ul>
+
+</div>
+
+<?php endif?>
   
-})(get_option("social_link_settings",""));?>
+
+
+
 </footer>
+
+</div>
+
+<!-- removeIf(production) -->
+<div id="grid-lines" style="display:none;">
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+</div>
+<!-- removeIf(production) -->
+
+
 <script src="<?= THEME_URL;?>/js/front-end-entry.js?v=<?=CACHE_BREAK;?>"></script>
 </body>
 </html>

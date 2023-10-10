@@ -1,1 +1,0 @@
-<h1 class="page_title"><?=$page_title;?></h1>
