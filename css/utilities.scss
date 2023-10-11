@@ -1,20 +1,35 @@
-.reading-section {
+.after-block {
+    &:after {
+      display:block;
+      content:'';
+    }
+}
+.before-block {
+    &:before {
+      display:block;
+      content:'';
+    }
+}
+
+.font-sans {
+    font-family: var(--font-sans);
+    * {
+        font-family: var(--font-sans);
+    }
+}
+.font-serif {
     font-family: var(--font-serif);
-    font-size: 16px;
-    line-height: 1.5
+    * {
+        font-family: var(--font-serif);
+    }
 }
-.translucent-pane {
-    background: var(--btn-bg);
-    color: var(--screen-text);
-    border: 1px solid currentColor;
-    padding: var(--gutter);
+
+.no-underline {
+    text-decoration: none !important;
 }
-.is-hidden {
+.middle-center {
     position: absolute;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    border: 0;
-    clip: rect(1px,1px,1px,1px);
-}
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }

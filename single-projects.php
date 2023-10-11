@@ -1,5 +1,8 @@
 <?php require_once "header.php";?>
+<?php
 
+
+?>
 <article>
 <section class=topsection>
     <?php if(get_post_thumbnail_id()):?>
@@ -10,7 +13,7 @@
     <div>
         <div>
             <h1><?= get_the_title()?></h1> 
-            <?php if(get_the_excerpt()):?>
+            <?php if(has_excerpt()):?>
             <h2><?= get_the_excerpt() ?></h2>
             <?php endif?>
         </div>
@@ -35,9 +38,16 @@
 <?php endif?>
 <?php
 if(get_the_tags()) {
-    var_dump(get_term_link(5));
+    
     $components["tag_list"](get_the_tags());
 }
+?>
+<?php 
+$more_posts = $utility_functions["create_more_posts"]($post->ID, "projects");
+$components["more_posts"](array_map(function($p){
+    $p["cta_text"] = "View case study";
+    return $p; 
+}, $more_posts), "More case studies");
 ?>
 
 </article>

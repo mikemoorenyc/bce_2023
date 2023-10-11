@@ -1,56 +1,63 @@
-header {
-    padding: var(--gutter);
-    padding-bottom: calc(var(--gutter) * 2)
-}
-.header-logo {
-    display:block;
-    width: 106px;
-}
-.menu-opener {
-    position:fixed;
-    right: 0;
-    top: 0;
-    z-index: 81;
-    &.opened {
-        & .menu-opener-close {
-            display: block;
-        }
-        & .menu-opener-open {
-            display: none;
-        }
-    }
- 
-}
-.menu-opener-inner {
-    margin: 20px var(--gutter) 0 0;
-    display:flex; 
-    align-items: center;
-  
-}
-.menu-opener-icon {
-    margin-right: 6px; 
-    & svg {
-        width: 14px;
-        height: 14px;
-    }
-}
-.menu-opener-close {
-    display:none; 
-}
-.main-menu-nav-container {
-    position:fixed;
-    z-index:80;
-    width: 100%;
-    height: 100%;
-    background: pink; 
+@use "sass:math";
+@use "./dim.scss";
+
+.header {
+    position: fixed;
+    z-index:3;
     left: 0;
     top: 0;
-    display:flex; 
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    display:none; 
-    &.opened {
-        display:flex;
+    width: 100%;
+    height: 0;
+
+    /*mods*/
+    &__center {
+        top: calc(var(--header-top-padding) / 2);
+        transform: translateY(-50%);
     }
+
+    @media(min-width:dim.$t7 ){
+        width: dim.$t7;
+        height: 0;
+        left: calc(50% - #{math.div(dim.$t7 , 2)});
+    }
+    @media(min-width:dim.$d-mq) {
+        width: dim.$dt-width;
+        left: calc(50% - ( #{math.div(dim.$dt-width , 2)}  ));
+    }
+    &-spinner, &-spinner:before {
+        position: absolute;
+        border-width:1px;
+        border-radius: 50%;
+        background:var(--bg-white);
+    }
+    &-spinner {
+        left: var(--gutter-width);
+        width: 32px;
+        height: 32px;
+        display: block;
+        &:before {
+            width: 22px;
+            height: 22px;
+            border-style:dashed;
+            left: 50%;
+            top: 50%;
+            margin-left: -11px;
+            margin-top: -11px;
+            animation: spinner 5s infinite linear;
+            will-change:transform;
+        }
+    }
+}
+
+@import "./header-mob.scss";
+
+
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg)
+  }
 }

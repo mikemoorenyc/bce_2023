@@ -1,6 +1,6 @@
 </main>
 
-<footer class="footer">
+<footer id="footer" class="footer">
 <?php $nav = wp_get_nav_menu_items("Main Menu");?>
 <?php if ($nav):?>
 <nav>
@@ -39,20 +39,15 @@
 
 <!-- removeIf(production) -->
 <div id="grid-lines" style="display:none;">
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
-  <hr/>
+<?php
+for($i = 0; $i < 12; $i++) {
+  echo "<hr />";
+}
+
+
+?>
 </div>
-<!-- removeIf(production) -->
+<!--endRemoveIf(production)-->
 
 
 <script src="<?= THEME_URL;?>/js/front-end-entry.js?v=<?=CACHE_BREAK;?>"></script>

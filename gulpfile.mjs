@@ -103,7 +103,7 @@ if(isProd) {
     postCssPlugins = [...postCssPlugins,cssNano()]
 }
 const css = () => {
-    return src(["./css/front-end.scss","./css/back-end.scss"])
+    return src(["./css/front-end.scss","./css/back-end.scss",(!isProd ? "./css/grid-lines.scss":"")])
         .pipe(sass().on('error', sass.logError))
         .pipe(GulpPostCss(postCssPlugins))
         .pipe(rename({

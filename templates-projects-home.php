@@ -13,7 +13,7 @@ $p_cards = array_map(function ($p) {
    global $utility_functions;
    return array(
     "image_id" => get_post_thumbnail_id($p->ID),
-    "title" => get_the_title($p->post_title),
+    "title" => $p->post_title,
     "link" => get_permalink($p->ID),
     "cta_text" => "View case study",
     "tagline" => $utility_functions["truncate_string"](get_the_excerpt($p->ID),75)

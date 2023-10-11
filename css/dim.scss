@@ -1,0 +1,14 @@
+$ts: 0.25s;
+
+$m4: 480px;
+$t7: 760px;
+$d9: (950px);
+$d-mq: $d9 + 48px + 16px;
+
+/*BREAK POINTS*/
+$dt-break: 801px;
+$dt-max-break: ($dt-break - 1px);
+$tab: 'min-width:401px';
+$dt: 'min-width: 1032px';
+$dt-max: 1280px;
+$dt-width: ($d9 + 38px);

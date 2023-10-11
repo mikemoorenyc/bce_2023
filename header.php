@@ -29,6 +29,10 @@ if($pages){
 }
 ?>
 <link rel='stylesheet' href="<?= THEME_URL;?>/css/front-end.css?v=<?= CACHE_BREAK;?>" type="text/css" />
+<!-- removeIf(production) -->
+<link rel='stylesheet' href="<?= THEME_URL;?>/css/grid-lines.css?v=<?= CACHE_BREAK;?>" type="text/css" />
+<!--endRemoveIf(production)-->
+
 <script>
 var WP_GLOBALS = <?= json_encode($js_globals);?>
 </script>
@@ -38,6 +42,13 @@ var WP_GLOBALS = <?= json_encode($js_globals);?>
 
 <?php $page_header = (is_front_page()? "": get_the_title()." - ").get_bloginfo("name")." - ".get_bloginfo("description");?>
 <?php $page_title = is_front_page()? get_bloginfo("name"): get_the_title();?>
+<?php
+if(is_archive()) {
+    
+    $page_header = "Things tagged: ". get_queried_object()->name ." - ".get_bloginfo("name")." - ".get_bloginfo("description");
+}
+
+?>
 <?php $excerpt = is_front_page()? get_post_custom($post->ID)["homepage_copy"][0] : str_replace("[&hellip;]","",get_the_excerpt()); ?>
 
 <link rel="canonical" href="<?= wp_get_canonical_url();?>" />
@@ -78,14 +89,17 @@ if($card_url) {
 
 </head>
 <body>
-<a href="#main">Skip to content</a>
-<div id="header-test"></div>
-<header>
-    <a href="<?= get_home_url()?>" class="lockup">
+<a href="#main" class="skip-content no-underline font-sans after-block">Skip to content</a>
+<div id="header-test" aria-hidden=true></div>
+<header class="header">
+    <a href="<?=get_home_url();?>" class="header-spinner before-block header__center" aria-hidden=true></a>
+    <div class="header-mob-scrim" aria-hidden=true></div>
+    
+   <!-- <a href="<?= get_home_url()?>" class="lockup">
         <span class="spinner" aria-hidden="true"></span>
         <span class="lockup_title"><?= get_bloginfo("")?></span>
         <span class="lock_tagline"><?= get_bloginfo("description")?></span>
-    </div>
+    </a>-->
     <?php $nav = wp_get_nav_menu_items('Main Menu');?>
     <?php if($nav) {
         ?>
@@ -106,7 +120,14 @@ if($card_url) {
 
         <?php
     }?>
-    
+    <button aria-hidden=true class="header-mob-toggle header__center before-block after-block"> 
+        <span data-state="closed" class="header-mob-toggle-icon header-mob-toggle-icon--active middle-center">
+            <?php include "assets/svgs/menu.svg" ?>
+        </span>
+        <span data-state="opened" class="header-mob-toggle-icon  middle-center ">
+            <?php include "assets/svgs/cancel.svg"?>
+        </span>
+    </button>
 
 </header>
 

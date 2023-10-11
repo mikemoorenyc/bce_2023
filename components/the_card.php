@@ -3,7 +3,7 @@
 $the_card = function($card) {
     global $components;
     extract($card);
-    
+
     ?>
 <div>
     <?php if($image_id){$components["lazy_img"]($image_id);} ?>
