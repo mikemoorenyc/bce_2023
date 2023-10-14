@@ -2,8 +2,11 @@
 <?php require_once "header.php";?>
 
 
-<div>
-    <?= $utility_functions["copy_parse"]($post->post_content) ?>
+<div class="home-header grid-layout content-centerer">
+    <div>
+        <?= $utility_functions["copy_parse"]($post->post_content) ?>
+    </div>
+    
 </div>
 <?php
 $hp_projects = get_posts(array(
@@ -21,28 +24,29 @@ $hp_projects = get_posts(array(
 ?>
 <?php if(count($hp_projects)):?>
 <?php
-$section_title = "Projects";
-$see_all_url = get_permalink(get_page_by_path("projects"));
-$see_all_text = "projects";
-include THEME_DIRECTORY."/partials/hp-section-top.php";
+
+ob_start();
 ?>
 
     <?php foreach($hp_projects as $p):?> 
     
     <?php $link = get_permalink($p->ID);?>
-    <article>
+    <article class="home-project-item">
         <link rel="prefetch" href="<?=$link;?>" />  
         <?php if(get_the_post_thumbnail($p->ID)):?>
-        <a href="<?=$link?>">
-            <?php $components["lazy_img"](get_post_thumbnail_id($p->ID));?>
+        <a class="home-project-thumb layout-poster-container normal-hover"href="<?=$link?>">
+            <?php $components["lazy_img"](array(
+                "id" => get_post_thumbnail_id($p->ID),
+                "is_poster" => true
+            ));?>
         </a>  
         <?php endif;?>
-        <div>
+        <div class="home-project-copy">
             <h3><a href="<?=$link;?>"><?=$p->post_title?></a></h3>
-            <div>
+            <div class="home-tag type-tagline">
                 <?=$utility_functions["truncate_string"](get_the_excerpt($p->ID),75);?>
             </div>
-            <a href="<?=$link?>">
+            <a class="home-project-btn btn-styling font-sans no-underline" href="<?=$link?>">
                 <span>View case study</span>
                 <span>
                     <?include THEME_DIRECTORY."/assets/svgs/arrow-right-circle.svg";?>
@@ -53,7 +57,11 @@ include THEME_DIRECTORY."/partials/hp-section-top.php";
 
     </article>
     <?php endforeach;?>
-<?php include THEME_DIRECTORY."/partials/hp-section-bottom.php"?>
+    <?php
+    $children = ob_get_clean();
+    $components["hp_section"]("My work",$children,get_permalink(get_page_by_path("projects")), "my projects");
+
+    ?>
 <?php endif;?>
 
 <?php $hp_posts  = get_posts(array(
@@ -71,25 +79,27 @@ include THEME_DIRECTORY."/partials/hp-section-top.php";
 ));
 ?>
 <?php if(count($hp_posts)):?>
-<?php
-$section_title = "Writing";
-$see_all_url = get_permalink(get_page_by_path("blog"));
-$see_all_text = "my writing";
-include THEME_DIRECTORY."/partials/hp-section-top.php";
-?>
+<?php ob_start(); ?>
+
 <?php foreach($hp_posts as $p):?>
+<?php
+$excerpt = has_excerpt($p->ID)?$utility_functions["truncate_string"](get_the_excerpt($p->ID),140):null
+?>
 <?php $link = get_permalink($p->ID);?>
 
     <article>
     <link rel="prefetch" href="<?=$link;?>" /> 
-    <?php $components["blog_copy"]($p->post_title,$link,$utility_functions["truncate_string"](get_the_excerpt($p->ID),140)) ?>
+    <?php $components["blog_item"]($p->post_title,$link,$excerpt) ?>
       
 
     </article>
 
 <?php endforeach;?>
 
-<?php include THEME_DIRECTORY."/partials/hp-section-bottom.php";?>
+<?php 
+$children = ob_get_clean();
+$components["hp_section"]("Writing",$children,get_permalink(get_page_by_path("blog")), "my writing");
+?>
 
 <?php endif;?>
 

@@ -1,0 +1,16 @@
+@use "../dim.scss";
+.big-card-list-container {
+    padding: 0 var(--gutter-width);
+    @media(min-width: dim.$t7) {
+        gap: var(--gutter-width);
+    }
+    @media(min-width: dim.$d-mq) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}  
+.big-card-list-card-extra-class {
+    margin-bottom: var(--gutter-width);
+    @media(min-width: dim.$t7) {
+        margin: 0;
+    }
+}

@@ -1,0 +1,23 @@
+@use "../dim.scss";
+.mp-container {
+    margin-top: var(--gutter-width);
+    
+}
+.mp-slim-card {
+    &:not(:first-child) {
+        @media(max-width: (dim.$t7 - 1px)) {
+            margin-top: calc(var(--gutter-width) / 2)
+        }
+    }
+    @media(min-width: dim.$t7) {
+        margin: 0;
+        width: calc(50% - ( var(--gutter-width) / 4 ))
+    }
+    
+}
+.mp-post-items-container {
+    @media(min-width: dim.$t7) {
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,133 @@
+@use "sass:math";
+@use "../mixins.scss";
+@use "../dim.scss";
+.ps-top-section {
+    position:relative;
+    @media(min-width:dim.$t7) and (max-width: (dim.$d-mq - 1)){
+        height: calc(100vw * .5625);
+        max-height: calc(75vh - var(--header-top-padding));
+        margin-bottom: calc(var(--gutter-width) * 1.5);
+    }
+    
+}
+.ps-top-hero{
+    border-width: 1px 0;
+    @media(min-width:dim.$t7) and (max-width: (dim.$d-mq - 1)){
+        position:absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    @media(orientation:portrait) and (max-width: (dim.$t7 - 1)) {
+        height: 0;
+        padding-top: percentage(math.div(9,16 ));
+    }
+    margin-bottom: calc(var(--gutter-width) * 1.5);
+    
+}
+.ps-top-info-container {
+    position:relative; 
+    @media(min-width: dim.$t7) and (max-width: (dim.$d-mq - 1)){
+        width: dim.$t7;
+        margin: 0 auto; 
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    @media(min-width: dim.$d-mq) {
+        //width: 988px
+    }
+}
+.ps-top-info {
+    margin: 0 $gutter-width 24px;
+    @media(min-width: dim.$t7) and (max-width: (dim.$d-mq - 1)){
+  
+        margin: 0;
+        position: relative;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background: var(--bg-white);
+        padding: var(--gutter-width);
+        border-width: 2px;
+        box-shadow: 2px 2px 0 var(--the-color);
+    }
+}
+//Desktop Header Styles
+@media(min-width: dim.$d-mq) {
+    .ps-top-section {
+        display:flex;
+        border-width: 1px 0 ;
+        margin-bottom: calc(var(--gutter-width) * 1.5 );
+    }
+    .ps-top-info-container {
+        order: 1;
+        width: calc(50% - var(--half-gutter));
+        background: var(--the-color);
+        color: var(--bg-white);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        body:global(.dark-mode) & {
+            background-color: var(--bg-white);
+            color: var(--the-color);
+            border-right-width: 1px;
+        }
+    }
+    .ps-top-info {
+        margin: 0;
+        width: 456px;
+        padding: var(--gutter-width);
+        padding-left: 0;
+    }
+    .ps-top-hero {
+        order: 2;
+        flex: 1; 
+        border-width:0;
+        margin-bottom: 0;
+        &:after {
+            display:block;
+            content: "";
+            width: 100%;
+            height: 0;
+            padding-top: percentage(math.div(9,16));
+        }
+    }
+}
+.ps-project-tag {
+    margin-top: 8px;
+}
+.ps-top-links-class {
+    margin-top: var(--gutter-width);
+    font-size: 14px;
+    * {
+        display:inline-block
+    }
+    h3 {
+        margin-right: 8px;
+        font-size: inherit;
+        &::after {
+            content: ":"
+        }
+    }
+}
+.ps-what-i-learned {
+    position: relative;
+    margin: var(--gutter-width) 0 0;
+    padding: var(--gutter-width) ;
+    border-width: 1px;
+    border-style: dashed;
+    
+    > ul {
+        > li {
+            display: inline-block;
+            margin-right: 4px;
+            &:not(:last-child) {
+                &:after {
+                    content:", "
+                }
+            }
+        }
+    }
+}

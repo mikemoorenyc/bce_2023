@@ -12,17 +12,34 @@ $posts  = get_posts(array(
 ?>
 <div>
 <?php foreach($posts as $p):?>
-<?php $link = get_permalink($p->ID);?>
-<article>
-    <?php $components["blog_copy"]($p->post_title,$link,$utility_functions["truncate_string"](get_the_excerpt($p->ID),140)) ?>
-    <?php if(get_the_post_thumbnail($p->ID)):?>
-        <a href="<?=$link?>">
-            <?php $components["lazy_img"](get_post_thumbnail_id($p->ID));?>
-        </a>  
-    <?php endif?>
+<?php 
+    $link = get_permalink($p->ID);
+    $excerpt = has_excerpt($p->ID) ? $utility_functions["truncate_string"](get_the_excerpt($p->ID),140) : null;
+    $img_id = get_post_thumbnail_id($p->ID);
+?>
+    <article class="blog-item blog-item-padding">
+    <link rel="prefetch" href="<?=$link;?>" />  
+        <div class="blog-item-inner">
+            <div class="blog-landing-copy <?=!$img_id?" blog-landing-copy-full-width":""?>">
+                <?php $components["blog_copy"]($p->post_title,$link,$excerpt) ?>
+            </div>
+            <?php if($img_id):?>
+            <a class="blog-landing-image layout-thin-box layout-poster-container" style="padding-top: 56.25%" href="<?=$link?>">
+                <?php $components["lazy_img"](array(
+                    "id" => $img_id,
+                    "is_poster" => true,
+                    "extra_classes" => "layout-poster-img"
+                ));?>
+            </a>  
+            <?php endif?>
+        </div>
+        
+        
+            
+        
 
 
-</article>
+    </article>
 
 <?php endforeach;?>
 

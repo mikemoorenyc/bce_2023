@@ -1,0 +1,37 @@
+@use  "../dim.scss";
+.font-sans {
+    font-family: var(--font-sans);
+    * {
+        font-family: var(--font-sans);
+    }
+}
+.font-serif {
+    font-family: var(--font-serif);
+    * {
+        font-family: var(--font-serif);
+    }
+}
+.font-weight-normal {
+    font-weight: normal;
+}
+.type {
+&-article-heading {
+    font-size: 26px;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-weight: bold;
+    @media(min-width: dim.$t7) {
+      font-size: 42px;
+    }
+}
+&-tagline {
+    font-family: var(--font-serif);
+    font-weight: normal;
+    font-style: italic;
+    line-height: 1.4;
+}
+&-smaller {
+    font-size: 14px;
+}
+}

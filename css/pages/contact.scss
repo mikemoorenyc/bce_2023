@@ -1,0 +1,22 @@
+.contact-copy-layout {
+    grid-column-start: 1;
+    grid-column-end: 9;
+}
+.contact-social-links {
+    >li {
+        a {
+            display:block;
+            line-height: 44px;
+            padding-left: 28px; 
+            position:relative;
+            svg {
+                display: block;
+                width: 20px;
+                height: 20px;
+                left: 0;
+                top: calc(50% - 10px);
+                position: absolute;
+            }
+        }
+    }
+}

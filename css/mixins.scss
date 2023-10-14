@@ -1,0 +1,25 @@
+@use "./dim.scss";
+@mixin grid-layout() {
+    @media(min-width: dim.$t7) {
+      display:grid; 
+      column-gap: var(--gutter-width);
+      //padding: 0 var(--gutter-width);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: auto; 
+    }
+    @media(min-width: dim.$d-mq) {
+      grid-template-columns: repeat(12, minmax(0,1fr));
+    }
+    
+}
+@mixin content-centerer() {
+  padding-left:  var(--gutter-width);
+  padding-right: var(--gutter-width);
+  margin: 0 auto; 
+  @media(min-width:dim.$t7) {
+    max-width: dim.$t7;
+  }
+  @media(min-width:dim.$d-mq) {
+    max-width: dim.$dt-width;
+  }
+}

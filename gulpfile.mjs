@@ -47,15 +47,15 @@ const assetMove = () => {
 }
 
 const js = (done) => {
-    const entries = ["front-end-entry","back-end-entry"]
+    const entries = ["front-end-entry.js","back-end-entry.jsx"]
     entries.forEach((e,i)=> {
-        return src(`./js/${e}.jsx`)
+        return src(`./js/${e}`)
             
             .pipe(webpackStream({
                 watch: !isProd,
                 mode: !isProd?'development':'production',
                 output: {
-                    filename: `${e}.js`
+                    filename: `${e}`
                 },
                 module: {
                     rules: [

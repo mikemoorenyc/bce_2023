@@ -12,6 +12,8 @@ include_once THEME_DIRECTORY."/partials/get_all_image_sizes.php";
 include_once THEME_DIRECTORY."/partials/get_og_img.php";
 $card_url = get_og_img();
 
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,10 +92,10 @@ if($card_url) {
 </head>
 <body>
 <a href="#main" class="skip-content no-underline font-sans after-block">Skip to content</a>
-<div id="header-test" aria-hidden=true></div>
+
 <header class="header">
-    <a href="<?=get_home_url();?>" class="header-spinner before-block header__center" aria-hidden=true></a>
-    <div class="header-mob-scrim" aria-hidden=true></div>
+    <a href="<?=get_home_url();?>" class="header-spinner before-block header__center normal-hover" aria-hidden=true></a>
+    
     
    <!-- <a href="<?= get_home_url()?>" class="lockup">
         <span class="spinner" aria-hidden="true"></span>
@@ -101,25 +103,59 @@ if($card_url) {
         <span class="lock_tagline"><?= get_bloginfo("description")?></span>
     </a>-->
     <?php $nav = wp_get_nav_menu_items('Main Menu');?>
-    <?php if($nav) {
-        ?>
-    <nav class="header_nav">
-        <ul class="header_nav_ul">
-        <?php
-        foreach($nav as $n) {
-            
-            ?>
-            <li class="header_nav_ul_li <?= (get_permalink($post->ID) == $n->url)? "header_nav_ul--active": ""?>"><a href="<?=$n->url?>"><span><?=$n->title?></span></a></li>
+    <?php if($nav): ?>
+        <div class="header-nav-container">
+        <div class="header-lockup">
+            <a href="<?=get_home_url()?>" class="header-lockup-title no-underline font-sans normal-hover">
+                <span><?=get_bloginfo("title")?>
+            </a>
+            <div class="header-lockup-tagline"><?= get_bloginfo("description")?></div>
+
+        </div>
+            <nav class="header-nav">
+                <ul class="header-nav-ul">
+<?php
+
+$active_slug = $post->post_name;
+$type = $post->post_type;
+
+if($type == "projects") {
+    $active_slug ="projects";
+}
+if($type == "post") {
+    $active_slug = "blog";
+}
+function set_active_state($n,$c) {
+    global $active_slug;
+    // $n->ID, '_menu_item_object_id', true )
+    $page = get_post($n->object_id);
+
+    if($page->post_name == $active_slug){
+        return " ".$c."--active";
+    }
+    return "";
+} 
+
+?>
+        <?php foreach($nav as $n):?>
+       
+
+
+            <?php $active_state =  (get_permalink($post->ID) == $n->url)?>
+            <li data-slug=<?=$post->post_name?> class="header-nav-ul-li <?= set_active_state($n,"header-nav-ul-li");?>"><a class="header-nav-ul-li-a <?=set_active_state($n,"header-nav-ul-li-a")?>"  href="<?=$n->url?>"><span><?=$n->title?></span></a></li>
             <?php
-        }
-
         ?>
 
-        </ul>
-    </nav>
+        <?php endforeach?>
 
-        <?php
-    }?>
+                </ul>
+            </nav>
+        </div>
+
+    <?php endif?>
+    
+    
+    
     <button aria-hidden=true class="header-mob-toggle header__center before-block after-block"> 
         <span data-state="closed" class="header-mob-toggle-icon header-mob-toggle-icon--active middle-center">
             <?php include "assets/svgs/menu.svg" ?>
@@ -133,5 +169,6 @@ if($card_url) {
 
 
 <div id="footer-grid-wrap">
-    <main id="main-content-container">
+    <main id="main" class="main-content-container">
+    <div id="header-test" aria-hidden=true></div>
 

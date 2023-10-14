@@ -1,0 +1,24 @@
+@use "sass:math";
+.small-button-tag-link {
+    display:block;
+    font-size: math.div(12em , 18);
+    border-style:dotted;
+    border-width: 1px;
+    padding: math.div(4em , 12) math.div(8em , 12); 
+    box-shadow: 1px 1px 0 var(--the-color);
+    transition: all .1s;
+    @media not all and (hover:none) {
+        &:hover {
+            transform: translate(-1px,-1px);
+            box-shadow: 2px 2px 0 var(--the-color);
+            position:relative; 
+            border-style: solid;
+           
+        }
+    }
+    &:active {
+        transform: translate(0px,0px);
+        box-shadow: 1px 1px 0 var(--the-color);
+        transition:none;
+    }
+}

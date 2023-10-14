@@ -16,7 +16,7 @@ $p_cards = array_map(function ($p) {
     "title" => $p->post_title,
     "link" => get_permalink($p->ID),
     "cta_text" => "View case study",
-    "tagline" => $utility_functions["truncate_string"](get_the_excerpt($p->ID),75)
+    "tagline" => has_excerpt($p->ID)?$utility_functions["truncate_string"](get_the_excerpt($p->ID),75):null
    );
 
 },$posts);

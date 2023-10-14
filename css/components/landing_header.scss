@@ -1,0 +1,43 @@
+@use "../dim.scss";
+.landing-header-excerpt {
+  font-size: 14px; 
+  grid-column-start: 1;
+  grid-column-end: 3;
+  @media(min-width: dim.$d-mq) {
+    font-size: 1em; 
+    grid-column-end: 10;
+  }
+}
+@media(min-width: var(--d-mq)) {
+  .excerpt {
+    font-size: 1em; 
+    grid-column-end: 10; 
+  }
+}
+
+.landing-header-title{
+    font-size: 30px;
+    margin-bottom:16px;
+    &:last-child {
+      margin-bottom:0;
+    }
+    @media(min-width: dim.$t7) {
+      font-size: 36px;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 4
+    }
+    @media(min-width:dim.$d-mq) {
+      font-size: 52px;
+      grid-column-end: 10;
+    }
+}
+.landing-header-rule {
+    height: 1px;
+    border-top-width:1px;
+    margin: var(--gutter-width) 0;
+    @media(min-width:dim.$d-mq) {
+      margin:32px 0;
+    }
+}

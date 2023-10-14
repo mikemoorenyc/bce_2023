@@ -1,62 +1,43 @@
-footer {
+@use "./dim.scss";
 
-    font-size: 11px;
-    text-transform: uppercase;
-}
-.footer-social-links-container {
-    background: var(--screen-bg);
-    display:flex;
-}
-a.footer-social-links {
-    text-decoration: none;
-    color: var(--screen-text);
-    text-align:center;
-    flex: 1; 
-    padding: 8px;
-
-    position: relative;
-    &:not(:nth-child(1)):before {
-        display: block;
-        content:'';
-        border-left: 1px solid currentColor;
-        height: calc(100% - 16px);
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        position:absolute;
+.footer {
+    padding-top:48px;
+    padding-bottom: 48px;
+    border-top-width:1px;
+    margin-top: 80px;
+    font-size: 12px;
+    line-height: 1.8;
+    &-inner {
+        border-width: 1px;
+        padding-top: var(--gutter-width);
+        padding-bottom: var(--gutter-width);
+        background: var(--bg-white);
+        margin: 0 var(--gutter-width);
         
+        @media(min-width: dim.$t7) {
+        
+            margin: 0 auto; 
+            width: calc(#{dim.$t7} - ( var(--gutter-width) * 2 ) );
+   
+        }
+        &-nav {
+            display:flex;
+            margin-bottom: var(--gutter-width);
+            @media(min-width: dim.$t7) {
+                justify-content: space-between;
+            }
+            &-section {
+                flex: 1;
+                @media(min-width: dim.$t7) {
+                     width: calc(50% - (var(--gutter-width) / 2) );
+                }
+            }
+            
+        }
     }
-}
-#live-data-container {
-   display: flex;
-   position:sticky;
-   bottom:0;
-   font-size: 11px;
-   text-transform: uppercase;
-   background: var(--blue-accent);
-}
-.live-data-section-container {
-    display:flex;
-    
-    align-items: center;
-    flex:1;
-    padding:6px;
-    
-}
-.live-data-section-img {
-    width: 36px;
-    height: 36px;
-    position: relative;
-    & svg {
-        position:absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        width: 28px;
-        height: 28px;
+    &-credit-line {
+        font-size: 10px;
+        text-transform:uppercase;
     }
-}
-.live-data-section-text {
-    padding-left: 6px;
     
 }

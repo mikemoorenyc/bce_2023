@@ -1,0 +1,84 @@
+@use "../dim.scss";
+.about-picture {
+    svg {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-width: 1px;
+        box-shadow: 2px 2px 0 var(--the-color);
+    }
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.about-copy-block {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  @media(min-width: dim.$d-mq) {
+    grid-column-end: 9;
+  }
+}
+
+.about-layout {
+  grid-template-rows: auto 1fr;
+}
+.about-like-section {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+@media(min-width: dim.$d-mq) {
+  .about-picture, .about-like-section {
+    grid-column-end: 13;
+    grid-column-start: 9;
+  }
+}
+.about-like-block {
+ padding: 15px;
+ border-style: dashed;
+ border-width: 1px;
+ margin-bottom: var(--gutter-width);
+
+ &:last-child {
+     margin-bottom: 0;
+ }   
+ > h2 {
+     margin-bottom: .5em;
+     @media(min-width: dim.$d-mq) {
+       font-size: 1.2em;
+     }
+     display:flex;
+     align-items: center;
+     @media(min-width:dim.$t7) and (max-width:dim.$d-mq) {
+        flex-direction: column;
+        align-items: flex-start;
+     }
+     svg {
+        margin-right: 4px;
+     }
+ }
+ > ul {
+
+    
+
+    li {
+      
+      font-size: .85em;
+      line-height: 1.2;
+      display:inline-block;
+        margin: 0 4px 0 0;
+        &:not(:last-child):after {
+          content: ',';
+        }
+
+      @media(min-width: dim.$d-mq) {
+        
+        
+      }
+    }
+  }
+}

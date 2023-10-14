@@ -1,7 +1,7 @@
 {
-  "name": "antilogy-site",
+  "name": "new_bce",
   "version": "1.0.0",
-  "description": "Antilogy Design Wordpress Theme",
+  "description": "BCE site BACK on Wordpress",
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,0 +1,58 @@
+@use "../dim.scss";
+@use "../mixins.scss";
+.blog-item-padding {
+    padding-left: var(--gutter-width);
+    padding-right: var(--gutter-width);
+    @media(min-width: dim.$t7) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.blog-tagline {
+    margin-top: var(--half-gutter); 
+}
+.blog-hero {
+    margin-top: var(--gutter-width)
+}
+.blog-copy {
+    margin-top: calc(var(--gutter-width) * 1.5)
+}
+.blog-item-inner {
+    @media(max-width: calc(dim.$t7 - 1px)) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    @media(min-width: dim.$t7) {
+        @include mixins.content-centerer();
+        @include mixins.grid-layout();
+    }
+    
+}
+.blog-landing-copy {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    &.landing-full-width {
+        grid-column-end: 4;
+    
+    }
+    @media(min-width: dim.$d-mq) {
+        grid-column-end: 8;
+        &.blog-landing-copy-full-width {
+            grid-column-end: 13;
+        }
+    }
+}
+.blog-landing-image {
+    @media(min-width: dim.$d-mq) {
+        grid-column-end: 13;
+        grid-column-start: 8;
+    }
+    @media (max-width:calc(dim.$t7 - 1px)) {
+        margin-bottom: var(--gutter-width);
+    }
+}
+.blog-single-headline {
+    @media(min-width: dim.$t7) {
+        margin-top: var(--gutter-width)
+    }
+}

@@ -1,13 +1,15 @@
 <?php
-$blog_copy = function($title,$link,$copy) {
+$blog_copy = function($title, $link, $excerpt="") {
     ?>
-        <h3><a href="<?=$link;?>"><?=$title;?></a></h3>
-        <?php if($copy):?>
-        <div>
-            <?=$copy?> <a href="<?=$link?>">Continue reading</a>
-        </div>   
-        <?php endif?>
-
+    <h3><a class="no-underline" href="<?=$link;?>"><?=$title;?></a></h3>
+    <div class="blog-item-meta">
+        <?php if($excerpt):?>
+            <div className="blog-item-excerpt type-tagline"> <?=$excerpt;?> </div>
+            
+        <?php endif;?> 
+        <a class="blog-item-readmore font-sans" href="<?=$link?>">Continue reading</a>
+    </div>
     <?php
 }
+
 ?>

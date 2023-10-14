@@ -1,7 +1,10 @@
 <?php
-$copy_area = function($copy) {
+$copy_area = function($copy, $extra_classes="", $is_reading_section=false) {
+
     ?>
-<div><?=$copy?></div>
+<div class="copy-area <?= $is_reading_section ? "copy-area-reading-section":""?> <?=$extra_classes?>">
+    <?=$copy?>
+</div>
     <?php
 }
 

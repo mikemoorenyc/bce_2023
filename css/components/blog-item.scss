@@ -1,0 +1,29 @@
+@use "../dim.scss";
+.blog-item {
+   
+        padding-bottom: var(--gutter-width);
+        margin-bottom: var(--gutter-width);
+        border-bottom-width: 1px;
+        border-style: dashed;
+    
+}
+.blog-item-meta {
+    line-height: 1.2;
+    font-size: .85em;
+    margin-top: .25em;
+    > * {
+        display: inline;
+    }
+    @media(min-width: dim.$d-mq) {
+        font-size: 1em;
+        margin-top: var(--half-gutter);
+    }
+}
+.blog-item-excerpt {
+    margin-right: 4px;
+}
+.blog-item-readmore {
+
+    display: inline-block;
+    font-size: .85em;
+}
