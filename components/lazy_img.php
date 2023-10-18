@@ -7,10 +7,10 @@ extract($options);
 $data = wp_get_attachment_metadata($id);
 
 if(!$data){return "";};    
-
+$mx =$optional_width ? strval(intval($optional_width)) : strval($data["width"]);
 $spacer_padding = (($data["height"]/$data["width"]) * 100)."%";      
-$max_width_style = $is_poster?"": "max-width:".($optional_width||$data["width"])."px;"
-    
+$max_width_style = $is_poster?"": "max-width:".$mx."px;";
+
 ?>
 
     <div 
@@ -20,10 +20,11 @@ $max_width_style = $is_poster?"": "max-width:".($optional_width||$data["width"])
     >
 
         <img 
-        alt="<?=get_post_meta($id, '_wp_attachment_image_alt', TRUE);?>" 
+        alt="<?=$optional_alt?:get_post_meta($id, '_wp_attachment_image_alt', TRUE);?>" 
         src="<?=THEME_URL."/assets/blank.svg"?>"
         width=<?=$data["width"]?>
         height=<?=$data["height"]?>
+        data-extra_classes="<?=$extra_classes;?>"
         data-src="<?=wp_get_attachment_image_src($id)[0];?>"
         data-srcset="<?= wp_get_attachment_image_srcset($id);?>" 
         data-state="not-initialized"

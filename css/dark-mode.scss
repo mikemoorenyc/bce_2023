@@ -1,0 +1,32 @@
+@use "./dim.scss";
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --the-color: white;
+    --bg-white : var(--dark-base);
+  }
+  @media(max-width: calc(dim.$t7 - 1px)) {
+    .header-nav-container {
+        background-color: var(--bg-white);
+        .header-lockup-title,.header-lockup,.header-lockup-tagline {
+            color: var(--the-color);
+        }
+        .header-nav-ul-li-a {
+            color:var(--the-color);
+            &:active,&:visited,&:hover {
+                color:var(--the-color);
+            }
+        }
+    }
+  }
+  .pull-quote-container {
+    background: none;
+    color:var(--the-color);
+  }
+  @media(min-width: dim.$d-mq) {
+    .ps-top-info-container {
+        background: none; 
+        color:var(--the-color);
+    }
+  }
+}

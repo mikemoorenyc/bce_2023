@@ -25,7 +25,19 @@
 
 </section>
 <section class="copy-area copy-area-reading-section">
-    <?= get_the_content() ?>
+
+<?php
+if(count(array_map(function($c){
+    return $c->slug == "password-protected";
+},get_the_category()))) {
+    $components["pw_check"]($post->ID);
+} else {
+the_content() ;
+}
+
+
+?>
+ 
 </section>
 <? $components["end_bullet"]()?>
 <div class="layout-bottom-reading-section">

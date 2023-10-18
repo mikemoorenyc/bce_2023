@@ -42,7 +42,7 @@ const templates = () => {
         .pipe(gulpIf(isProd,gulphtmlmin({ignoreCustomFragments:[ /<%[\s\S]*?%>/, /<\?[=|php]?[\s\S]*?\?>/ ]})))
 }
 const assetMove = () => {
-    return src("./assets/**/*", {base:"."})
+    return src(["./assets/**/*","./dom_parser/**/*"], {base:"."})
     .pipe(dest(config.directory))
 }
 
@@ -101,9 +101,13 @@ const js = (done) => {
 let postCssPlugins =[];
 if(isProd) {
     postCssPlugins = [...postCssPlugins,cssNano()]
+} 
+let cssImports = ["./css/dark-mode.scss","./css/front-end.scss","./css/back-end.scss"];
+if (!isProd) {
+    cssImports.push( "./css/grid-lines.scss");
 }
 const css = () => {
-    return src(["./css/front-end.scss","./css/back-end.scss",(!isProd ? "./css/grid-lines.scss":"")])
+    return src(cssImports)
         .pipe(sass().on('error', sass.logError))
         .pipe(GulpPostCss(postCssPlugins))
         .pipe(rename({

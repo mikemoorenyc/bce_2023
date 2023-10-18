@@ -3,3 +3,4 @@ node_modules/*
 requiredwpfiles/spotify_episode.json
 requiredwpfiles/spotify_track.json
 requiredwpfiles/weather_data.json
+dom_parser/*

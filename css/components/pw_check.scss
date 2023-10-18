@@ -1,0 +1,217 @@
+@use "../dim.scss";
+.pw-checking-state, .pw-form {
+margin: 0 auto;
+    width: calc(16px * 32);
+    max-width: calc( 100% - (var(--gutter-width) * 2) );
+}
+.pw-checking-state {
+    display: none;
+}
+.pw-form {
+    border: 4px dashed var(--the-color);
+    padding: var(--gutter-width);
+  
+}
+.pw-form-info {
+    font-size: .9em;
+    line-height: 1.2;
+    margin-bottom: 1.5em;
+    > a {
+        display: inline-block;
+    }
+}
+.pw-form-input {
+    
+    width: 100%;
+    max-width: calc(16px * 24);
+    position:relative;
+   &:before {
+       position:absolute;
+       left: 0;
+       top: 0;
+       right: 0;
+       bottom: 0;
+       border-width: 1px; 
+       pointer-events: none;
+   }
+    > * {
+        display: block;
+    }
+    label {
+        position:absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        cursor: text;
+        
+    }
+    input, label {
+        text-align: left;
+        font-size: 16px;
+        padding: 12px 16px 14px; 
+    }
+    input {
+        background-color:var(--bg-white);
+        width: 100%;
+        color:var(--the-color);
+        &:focus {
+            outline: none; 
+        }
+    }
+    .errorIcon {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform:translateY(-50%);
+        pointer-events: none; 
+        display: none;
+    }
+    &:focus-within, &.contains-text {
+        box-shadow: 2px 2px 0 var(--the-color);
+        &:before {
+            border-width: 2px; 
+            border-top: 0;
+            
+        }
+        label {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            height: auto;
+            pointer-events: none;
+            padding: 0;
+            top: -9px;
+            &:before, &:after {
+                display:block;
+                content: "";
+                height: 2px; 
+                background: var(--the-color);
+                
+            }
+            &:before {
+                width: 8px;
+            }
+            &:after {
+                flex: 1;
+            }
+            span {
+                margin: 0 8px;
+            }
+        }
+    }
+    &.errored {
+        input {
+            padding-right: 48px;
+        }
+        .errorIcon {
+            display: block;
+        }
+    }
+}
+.pw-form-error-text {
+    text-align: left;
+    font-size: .75em;
+    margin: .25em 0 1em 0;
+    width: 100%;
+    max-width: calc(16px * 24);
+    line-height: 1.2;
+}
+.pw-form-submit-button {
+    font-size: 16px;
+    padding: 12px 24px 14px 24px;
+    display: inline-block;
+    position: relative;
+    box-shadow: 2px 2px 0 var(--the-color);
+    &:before {
+        position:absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-width: 2px; 
+    }
+    &:hover {
+        box-shadow: 3px 3px 0 var(--the-color);
+        &:before {
+            border-width: 3px;
+        }
+    }
+    &:active {
+        box-shadow: 0;
+        transform: translate(3px, 3px);
+    }
+    &:disabled {
+        pointer-events: none;
+    }
+}
+.pw-checking-state {
+    .dot1 {
+ animation: visibility 3s linear infinite;
+}
+
+@keyframes visibility {
+ 0% {
+ opacity: 1;
+ }
+ 65% {
+ opacity: 1;
+ }
+ 66% {
+ opacity: 0;
+ }
+ 100% {
+ opacity: 0;
+ }
+}
+
+.dot2 {
+ animation: visibility2 3s linear infinite;
+}
+
+@keyframes visibility2 {
+ 0% {
+  opacity: 0;
+ }
+ 21% {
+  opacity: 0;
+ }
+ 22% {
+  opacity: 1;
+ }
+ 65% {
+  opacity: 1;
+ }
+ 66% {
+  opacity: 0;
+ }
+ 100% {
+  opacity: 0;
+ }
+}
+
+.dot3 {
+ animation: visibility3 3s linear infinite;
+}
+
+@keyframes visibility3 {
+ 0% {
+  opacity: 0;
+ }
+ 43% {
+  opacity: 0;
+ }
+ 44% {
+  opacity: 1;
+ }
+ 65% {
+  opacity: 1;
+ }
+ 66% {
+  opacity: 0;
+ }
+ 100% {
+  opacity: 0;
+ }
+}
+}

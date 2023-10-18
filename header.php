@@ -6,7 +6,8 @@ define("CACHE_BREAK",time());
 $js_globals = array(
     "theme_url" => THEME_URL,
     "ajax_url" => admin_url("admin-ajax.php"),
-    "post_id" => $post->ID
+    "post_id" => $post->ID,
+    "colors" => explode(" ",get_option("colors", ""))
 );
 include_once THEME_DIRECTORY."/partials/get_all_image_sizes.php";
 include_once THEME_DIRECTORY."/partials/get_og_img.php";
@@ -91,6 +92,18 @@ if($card_url) {
 
 </head>
 <body>
+<script>
+
+var color = WP_GLOBALS.colors[Math.floor(Math.random() * WP_GLOBALS.colors.length)]
+var st = document.createElement("style");
+st.innerText = `:root{--the-color: ${color}}`;
+
+document.querySelector("head").appendChild(st);
+
+</script>
+<style>
+@import "<?= THEME_URL;?>/css/dark-mode.css?v=<?= CACHE_BREAK;?>";
+</style>
 <a href="#main" class="skip-content no-underline font-sans after-block">Skip to content</a>
 
 <header class="header">

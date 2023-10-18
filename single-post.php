@@ -19,8 +19,8 @@
         <?php endif?>
 
     </div>
-    <div class="blog-copy">
-        <? $components["copy_area"](get_the_content(),"",true);?>
+    <div class="blog-copy copy-area copy-area-reading-section">
+        <?the_content();?>
         <? $components["end_bullet"]();?>
     </div>
     <div class="layout-bottom-reading-section">

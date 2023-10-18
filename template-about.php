@@ -9,7 +9,10 @@
     <?= $portait_svg;?>
     </div>
     <?php endif?>
-    <?php $components["copy_area"](get_the_content(),"about-copy-block");?>
+    <div class="copy-area about-copy-block">
+    <? the_content();?>
+    </div>
+    
     <?php
         $like = get_post_meta(get_the_ID(), "thingsilike",TRUE);
         $dlike = get_post_meta(get_the_ID(), "thingsidontlike",true); 

@@ -1,7 +1,10 @@
 const loadImage = (i) => {
+
     const container = i.parentNode;
     const holdingImg = i.querySelector("img");
     const newImg = document.createElement("img");
+    const newPic = document.createElement("picture");
+    newPic.classList.add("lazy-img-loading");
     newImg.setAttribute("alt", holdingImg.getAttribute("alt"));
     newImg.setAttribute("class", i.getAttribute("class"));
     newImg.classList.remove("lazy-img-fake");
@@ -11,10 +14,12 @@ const loadImage = (i) => {
         newImg.removeEventListener("load",loader);
         i.remove()
         newImg.classList.remove("lazy-img-loading");
+        newPic.classList.remove("lazy-img-loading");
         
     }
     newImg.addEventListener("load",loader);
-    container.append(newImg);
+    newPic.append(newImg);
+    container.append(newPic);
     newImg.setAttribute("srcset",holdingImg.dataset.srcset);
     newImg.setAttribute("src",holdingImg.dataset.src);
 }
