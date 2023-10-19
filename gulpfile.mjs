@@ -38,8 +38,9 @@ const templatePath = ["./*.php", "./*.html", "./partials/**/*","./admin_helpers/
 const templates = () => {
     return src(templatePath,{base:"."})
         .pipe(strip({production:isProd,development:!isProd}))
+       
         .pipe(dest(config.directory))
-        .pipe(gulpIf(isProd,gulphtmlmin({ignoreCustomFragments:[ /<%[\s\S]*?%>/, /<\?[=|php]?[\s\S]*?\?>/ ]})))
+        
 }
 const assetMove = () => {
     return src(["./assets/**/*","./dom_parser/**/*"], {base:"."})
@@ -55,7 +56,7 @@ const js = (done) => {
                 watch: !isProd,
                 mode: !isProd?'development':'production',
                 output: {
-                    filename: `${e}`
+                    filename: `${e.split(".")[0]}.js`
                 },
                 module: {
                     rules: [

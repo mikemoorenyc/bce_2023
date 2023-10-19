@@ -1,13 +1,16 @@
 <?php
-$more_posts = function($posts,$title) {
-    global $components; 
-    
-    ?>
-    <section class="mp-container">
-        <?php $components["small_header"](3, $title);?>
-        <div class="mp-post-items-container">
-            <?php foreach($posts as $p):?>
-            <?php $components["the_card"](
+extract($args);
+?>
+
+<section class="mp-container">
+    <?php get_template_part("components/small_header","",array(
+        "size" => 3,
+        "copy" => $title
+    ));?>
+        
+    <div class="mp-post-items-container">
+        <?php foreach($posts as $p):?>
+            <?php get_template_part("components/the_card","",
                 array(
                     "title" => $p["post_title"],
                     "tagline" => has_excerpt($p["ID"])? get_the_excerpt($p["ID"]):"",
@@ -21,8 +24,3 @@ $more_posts = function($posts,$title) {
         </div>
 
     </section>
-
-    <?php
-}
-
-?>

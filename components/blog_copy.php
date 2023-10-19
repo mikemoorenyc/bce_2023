@@ -1,6 +1,5 @@
-<?php
-$blog_copy = function($title, $link, $excerpt="") {
-    ?>
+<?php extract($args)?>
+
     <h3><a class="no-underline" href="<?=$link;?>"><?=$title;?></a></h3>
     <div class="blog-item-meta">
         <?php if($excerpt):?>
@@ -9,7 +8,3 @@ $blog_copy = function($title, $link, $excerpt="") {
         <?php endif;?> 
         <a class="blog-item-readmore font-sans" href="<?=$link?>">Continue reading</a>
     </div>
-    <?php
-}
-
-?>

@@ -1,4 +1,4 @@
-<?php
+<?php /*
 function admin_style() {
     $cache = false;
     //removeIf(production)
@@ -23,6 +23,6 @@ function admin_style() {
     );
     wp_add_inline_script( 'admin-scripts', 'const theme_data = ' . json_encode( $theme_data ), 'before' );
 
-  }
-  add_action('admin_enqueue_scripts', 'admin_style');
+  }*/
+  //add_action('admin_enqueue_scripts', 'admin_style');
   ?>

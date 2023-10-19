@@ -8,7 +8,7 @@
     grid-column-end: 10;
   }
 }
-@media(min-width: var(--d-mq)) {
+@media(min-width: dim.$d-mq) {
   .excerpt {
     font-size: 1em; 
     grid-column-end: 10; 
@@ -30,7 +30,7 @@
     }
     @media(min-width:dim.$d-mq) {
       font-size: 52px;
-      grid-column-end: 10;
+      grid-column-end: 13;
     }
 }
 .landing-header-rule {

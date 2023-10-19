@@ -35,7 +35,7 @@ ob_start();
         <link rel="prefetch" href="<?=$link;?>" />  
         <?php if(get_the_post_thumbnail($p->ID)):?>
         <a class="home-project-thumb layout-poster-container normal-hover"href="<?=$link?>">
-            <?php $components["lazy_img"](array(
+            <?php get_template_part("components/lazy_img","" ,array(
                 "id" => get_post_thumbnail_id($p->ID),
                 "is_poster" => true
             ));?>
@@ -59,7 +59,13 @@ ob_start();
     <?php endforeach;?>
     <?php
     $children = ob_get_clean();
-    $components["hp_section"]("My work",$children,get_permalink(get_page_by_path("projects")), "my projects");
+    get_template_part("components/hp_section","",array(
+        "section_title" => "My work",
+        "children" => $children,
+        "see_all_url" => get_permalink(get_page_by_path("projects")),
+        "see_all_text" => "my projects"
+    ));
+    
 
     ?>
 <?php endif;?>
@@ -89,7 +95,15 @@ $excerpt = has_excerpt($p->ID)?$utility_functions["truncate_string"](get_the_exc
 
     <article>
     <link rel="prefetch" href="<?=$link;?>" /> 
-    <?php $components["blog_item"]($p->post_title,$link,$excerpt) ?>
+    <?
+    get_template_part("components/blog_item","",array(
+        "title" => $p->post_title,
+        "link"=> $link,
+        "copy" => $excerpt
+    ));
+
+    ?>
+
       
 
     </article>
@@ -98,7 +112,12 @@ $excerpt = has_excerpt($p->ID)?$utility_functions["truncate_string"](get_the_exc
 
 <?php 
 $children = ob_get_clean();
-$components["hp_section"]("Writing",$children,get_permalink(get_page_by_path("blog")), "my writing");
+get_template_part("components/hp_section","",array(
+        "section_title" => "Writing",
+        "children" => $children,
+        "see_all_url" => get_permalink(get_page_by_path("blog")),
+        "see_all_text" => "my writing"
+    ));
 ?>
 
 <?php endif;?>

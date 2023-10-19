@@ -2,6 +2,14 @@
 
 $hp_section = function($section_title,$children, $see_all_url,$see_all_text) {
 ?>
+
+
+<?php
+};
+extract($args);
+?>
+
+
 <section class="home-section">
     <h2 class="home-section-heading" >
         <span class="content-centerer">
@@ -16,8 +24,3 @@ $hp_section = function($section_title,$children, $see_all_url,$see_all_text) {
         <a class="font-sans" href="<?=$see_all_url;?>">See all <?=$see_all_text;?></a>
     </div>
 </section>
-
-<?php
-};
-
-?>

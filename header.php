@@ -32,9 +32,14 @@ if($pages){
 }
 ?>
 <link rel='stylesheet' href="<?= THEME_URL;?>/css/front-end.css?v=<?= CACHE_BREAK;?>" type="text/css" />
-<!-- removeIf(production) -->
+<?php //removeIf(production) 
+?>
 <link rel='stylesheet' href="<?= THEME_URL;?>/css/grid-lines.css?v=<?= CACHE_BREAK;?>" type="text/css" />
-<!--endRemoveIf(production)-->
+<?php
+ //endRemoveIf(production)
+?>
+
+
 
 <script>
 var WP_GLOBALS = <?= json_encode($js_globals);?>

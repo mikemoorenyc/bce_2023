@@ -1,4 +1,5 @@
 <?php
+
 function password_check() {
     $key = get_option("password_key", "");
     if($key != trim($_POST['pw'])){
@@ -7,15 +8,6 @@ function password_check() {
     } ;
     $post = get_post(intval($_POST["id"]));
    setup_postdata( $post );
-   // echo get_the_content();
-   // die(); 
-	/**
-	 * Filters the post content.
-	 *
-	 * @since 0.71
-	 *
-	 * @param string $content Content of the current post.
-	 */
 	$content = apply_filters( 'the_content', $post->post_content );
 	$content = str_replace( ']]>', ']]&gt;', $content ); 
     echo $content;
@@ -24,4 +16,5 @@ function password_check() {
 
 add_action('wp_ajax_nopriv_password_check','password_check');
 add_action('wp_ajax_password_check','password_check');
+
 ?>

@@ -3,10 +3,13 @@
 <?php
 
 ?>
-<?php $components["landing_header"](get_the_title());?>
+<?php get_template_part("components/landing_header","",array("title" => get_the_title()) )?>
 <div class="content-centerer grid-layout">
     <div class="contact-copy-layout">
-        <?php $components["copy_area"](get_the_content());?>
+        <div class="copy-area copy-area-reading-sectioncopy-area copy-area-reading-section">
+        <?php the_content()?>
+        </div>
+        
         <?php $social = wp_get_nav_menu_items("Social Media");?>
     <?php if($social && count($social)):?>
     <ul class="contact-social-links">

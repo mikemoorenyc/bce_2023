@@ -1,10 +1,8 @@
 <?php require_once "header.php";?>
 <?php $tag = get_queried_object();?>
-<?php $components["landing_header"]("Things tagged to: ".$tag->name);?>
-<?php
+<?php get_template_part("components/landing_header","",array("title" => "Things tagged to: ".$tag->name) )?>
 
-
-
+<?
 $posts = get_posts(array(
     'posts_per_page' => -1,
     'orderby' => "date",
@@ -34,7 +32,7 @@ function card_maker($p) {
     );
 }
 $posts = array_map("card_maker",$posts);
-$components["big_card_list"]($posts)
+get_template_part("components/big_card_list","",array("card_list" => $posts))
 
 ?>
 

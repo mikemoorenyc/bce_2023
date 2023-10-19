@@ -1,6 +1,6 @@
 <?php
 $copy_area_buttons= function($block_content,$block) {
-    global $components; 
+
     $btn_string = "";
     $dom = new IvoPetkov\HTML5DOMDocument();
     foreach($block["innerBlocks"] as $b) {   
@@ -23,7 +23,13 @@ $copy_area_buttons= function($block_content,$block) {
         }
         $children = ob_get_clean();
         ob_start(); 
-        $components["small_button"]($href,$children,"copy-area-dl-button",$is_external);
+        get_template_part("components/small_button","",array(
+            "children"=>$children,
+            "is_external" => $is_external,
+            "href" => $href,
+            "extra_classes" => "copy-area-dl-button"
+        ));
+    
         $btn_string .= ob_get_clean(); 
         
 

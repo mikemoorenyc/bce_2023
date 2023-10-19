@@ -9,7 +9,8 @@
         <?php if(has_post_thumbnail()):?>
         <div>
             <div class="blog-hero layout-thin-box layout-poster-container" style="padding-top:56.25%">
-                <?php $components["lazy_img"](array(
+                <?php 
+                get_template_part("components/lazy_img","",array(
                     "id" => get_post_thumbnail_id(),
                     "is_poster" => true,
                     "extra_classes" => "layout-poster-img"
@@ -21,17 +22,21 @@
     </div>
     <div class="blog-copy copy-area copy-area-reading-section">
         <?the_content();?>
-        <? $components["end_bullet"]();?>
+        <? get_template_part("components/end_bullet","",[]);?>
     </div>
     <div class="layout-bottom-reading-section">
         <?php if(!empty(get_the_tags())):?>
-        <?php $components["tag_list"](get_the_tags());?>
+        <?php get_template_part("components/tag_list","",array("list"=>get_the_tags()));?>
         <?php endif?>
         <?php $more_posts = $utility_functions["create_more_posts"]($post->ID, "post");?>
-        <?php $components["more_posts"](array_map(function($p){
-            $p["cta_text"] = "Continue reading";
-            return $p; 
-        },$more_posts), "More writing") ?>
+        <? get_template_part("components/more_posts","",array(
+            "title" => "More writing",
+            "posts" =>  array_map(function($p){
+                            $p["cta_text"] = "Continue reading";
+                            return $p; 
+                        },$more_posts)
+        ))?>
+      
 
     </div>
 

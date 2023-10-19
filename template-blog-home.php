@@ -1,6 +1,6 @@
 <?php /*** Template Name: Blog Landing */?>
 <?php require_once "header.php";?>
-<?php $components["landing_header"](get_the_title(), get_the_content());?>
+<?php get_template_part("components/landing_header","",array("title" => get_the_title(), "copy"=>get_the_content()) )?>
 <?php
 $posts  = get_posts(array(
     'posts_per_page' => -1,
@@ -21,15 +21,21 @@ $posts  = get_posts(array(
     <link rel="prefetch" href="<?=$link;?>" />  
         <div class="blog-item-inner">
             <div class="blog-landing-copy <?=!$img_id?" blog-landing-copy-full-width":""?>">
-                <?php $components["blog_copy"]($p->post_title,$link,$excerpt) ?>
+                <?php  get_template_part("components/blog_copy","",array(
+                    "title"=>$p->post_title,
+                    "link" =>$link,
+                    "excerpt" =>$excerpt
+                )) ?>
+          
             </div>
             <?php if($img_id):?>
             <a class="blog-landing-image layout-thin-box layout-poster-container" style="padding-top: 56.25%" href="<?=$link?>">
-                <?php $components["lazy_img"](array(
+                <?php 
+                get_template_part("components/lazy_img","",array(
                     "id" => $img_id,
                     "is_poster" => true,
                     "extra_classes" => "layout-poster-img"
-                ));?>
+                ))?>
             </a>  
             <?php endif?>
         </div>

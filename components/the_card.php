@@ -1,8 +1,7 @@
 <?php
 //VALUES: cta_text, image_id, link, title, tagline, kicker, extra_classes, style_mod
-$the_card = function($card) {
-    global $components;
-    extract($card);
+extract($args);
+
 
 $class_maker = function($class_name) use($style_mod) {
     if(!$style_mod) {
@@ -16,7 +15,7 @@ $class_maker = function($class_name) use($style_mod) {
     <link rel="prefetch" href="<?=$link;?>" />  
     <?php if($image_id): ?>
     <div class="<?=$class_maker("the-card-img-container")?>">
-    <?=$components["lazy_img"](array("id"=>$image_id,"is_poster"=>true));?>
+        <? get_template_part("components/lazy_img","",array("id"=>$image_id,"is_poster"=>true)); ?>
     </div>
     <?php endif;?>
     <div class="<?=$class_maker("the-card-text-area")?>">
@@ -33,12 +32,8 @@ $class_maker = function($class_name) use($style_mod) {
     <div>
         <a href="<?=$link?>" class="<?= $class_maker("the-card-cta")?> font-sans no-underline normal-hover">
             <span><?= $cta_text ?: "View post" ?></span>
-            <?php include THEME_DIRECTORY."/assets/svgs/arrow-right-circle.svg" ?>
+            <?php include get_template_directory()."/assets/svgs/arrow-right-circle.svg" ?>
         </a>
     </div>
 
 </article>
-
-    <?php
-}
-?>

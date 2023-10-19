@@ -1,17 +1,11 @@
 <?php
-$blog_item = function($title,$link,$copy=null,$extra_classes=null) {
-    GLOBAL $components
-    ?>
-    <article class="blog-item <?=$extra_classes?>">
-        <?php $components["blog_copy"]($title,$link,$copy);?>
-    </article>
-        <!--<h3><a href="<?=$link;?>"><?=$title;?></a></h3>
-        <?php if($copy):?>
-        <div>
-            <?=$copy?> <a href="<?=$link?>">Continue reading</a>
-        </div>   
-        <?php endif?>
-    -->
-    <?php
-}
-?>
+extract($args);?>
+
+
+<article class="blog-item <?=$extra_classes?>">
+    <? get_template_part("components/blog_copy","",array(
+        "title" => $title,
+        "link" => $link,
+        "excerpt" => $copy
+    ));?>
+</article>

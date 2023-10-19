@@ -1,19 +1,13 @@
 <?php
 //$id, $extra_classes, $is_poster, $optional_alt,$optional_width
-
-
-$lazy_img = function($options) {
-extract($options);
+extract($args);
 $data = wp_get_attachment_metadata($id);
-
-if(!$data){return "";};    
 $mx =$optional_width ? strval(intval($optional_width)) : strval($data["width"]);
 $spacer_padding = (($data["height"]/$data["width"]) * 100)."%";      
 $max_width_style = $is_poster?"": "max-width:".$mx."px;";
 
 ?>
-
-    <div 
+<div 
     data-state="not-initialized"
     class="lazy-img <?= $is_poster? "layout-poster-img" : "lazy-img-fake ".$extra_classes ?> lazy-gradient" 
     style="<?=$max_width_style?>"
@@ -21,7 +15,7 @@ $max_width_style = $is_poster?"": "max-width:".$mx."px;";
 
         <img 
         alt="<?=$optional_alt?:get_post_meta($id, '_wp_attachment_image_alt', TRUE);?>" 
-        src="<?=THEME_URL."/assets/blank.svg"?>"
+        src="<?=get_bloginfo('template_url')."/assets/blank.svg"?>"
         width=<?=$data["width"]?>
         height=<?=$data["height"]?>
         data-extra_classes="<?=$extra_classes;?>"
@@ -33,21 +27,3 @@ $max_width_style = $is_poster?"": "max-width:".$mx."px;";
         />
         
     </div>
-
-
-    <?php
-}
-
-?>
-
-
-
-
-    
-<?php
-/*
-width=<?=$data["width"]?>
-        height=<?=$data["height"]?>
-        */
-?>
-

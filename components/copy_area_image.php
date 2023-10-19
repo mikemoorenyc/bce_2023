@@ -33,14 +33,13 @@ $copy_area_image = function($block_content, $block) {
    
     
     ob_start();
-    $components["lazy_img"](
-        array(
+    
+    get_template_part("components/lazy_img","",array(
             "optional_alt" => $par->querySelector("img")->getAttribute("alt"),
             "id" => $img_id,
             "optional_width" => $width,
             "extra_classes" => !$screenshot_classes ? "layout-thin-box" : "cai-screenshot cai-fake-img"
-        )
-    );
+        ));
 
 
     $lazy_img = ob_get_clean();

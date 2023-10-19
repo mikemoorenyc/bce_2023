@@ -1,7 +1,7 @@
 <?php /*** Template Name: About Page */?>
 <?php require_once "header.php";?>
 
-<?php $components["landing_header"](get_the_title());?>
+<?php get_template_part("components/landing_header","",array("title" => get_the_title()) )?>
 <div class="about-layout content-centerer grid-layout">
     <?php $portait_svg = get_post_meta(get_the_ID(),"portrait_svg",TRUE);?>
     <?php if($portait_svg):?>

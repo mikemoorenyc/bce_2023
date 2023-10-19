@@ -1,7 +1,9 @@
 <?php
-$pw_check = function($post_id) {
-    $link = get_permalink(get_page_by_path("contact-me"));
-    ?>
+extract($args);
+?>
+
+
+
 <div class="pw-form-check">
     <form class="pw-form font-sans" data-postid="<?=$post_id;?>">
         <h1>Password Required</h1>
@@ -18,9 +20,3 @@ $pw_check = function($post_id) {
         I&rsquo;m checking to see if you have access to this post <span class="dot1">🙊</span><span class="dot2">🙉</span><span class="dot3">🙈</span>    
     </div>
 </div>
-
-    <?php
-}
-
-
-?>

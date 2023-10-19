@@ -37,17 +37,14 @@
 
 </div>
 
-<!-- removeIf(production) -->
-<div id="grid-lines" style="display:none;">
-<?php
+<?php //removeIf(production) 
+echo '<div id="grid-lines" style="display:none;">';
 for($i = 0; $i < 12; $i++) {
   echo "<hr />";
 }
-
-
+echo "</div>"
+//endRemoveIf(production)
 ?>
-</div>
-<!--endRemoveIf(production)-->
 
 
 <script src="<?= THEME_URL;?>/js/front-end-entry.js?v=<?=CACHE_BREAK;?>"></script>
