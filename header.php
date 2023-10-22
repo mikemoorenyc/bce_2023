@@ -114,18 +114,13 @@ document.querySelector("head").appendChild(st);
 <header class="header">
     <a href="<?=get_home_url();?>" class="header-spinner before-block header__center normal-hover" aria-hidden=true></a>
     
-    
-   <!-- <a href="<?= get_home_url()?>" class="lockup">
-        <span class="spinner" aria-hidden="true"></span>
-        <span class="lockup_title"><?= get_bloginfo("")?></span>
-        <span class="lock_tagline"><?= get_bloginfo("description")?></span>
-    </a>-->
+
     <?php $nav = wp_get_nav_menu_items('Main Menu');?>
     <?php if($nav): ?>
         <div class="header-nav-container">
         <div class="header-lockup">
             <a href="<?=get_home_url()?>" class="header-lockup-title no-underline font-sans normal-hover">
-                <span><?=get_bloginfo("title")?>
+                <span><?=get_bloginfo("title")?></span>
             </a>
             <div class="header-lockup-tagline"><?= get_bloginfo("description")?></div>
 

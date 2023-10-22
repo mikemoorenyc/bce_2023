@@ -22,7 +22,7 @@
         Other places
         <ul>
            <?php foreach($social as $s):?>
-           <li><a target="<?=$s->target;?>" href="<?=$s->url?>"><?= $s->title?></a></li>
+           <li><a target="_blank" href="<?=$s->url?>"><?= $s->title?></a></li>
            <?php endforeach?>
         </ul>
       </div>

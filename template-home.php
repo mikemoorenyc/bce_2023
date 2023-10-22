@@ -34,7 +34,7 @@ ob_start();
     <article class="home-project-item">
         <link rel="prefetch" href="<?=$link;?>" />  
         <?php if(get_the_post_thumbnail($p->ID)):?>
-        <a class="home-project-thumb layout-poster-container normal-hover"href="<?=$link?>">
+        <a class="home-project-thumb layout-poster-container normal-hover" href="<?=$link?>">
             <?php get_template_part("components/lazy_img","" ,array(
                 "id" => get_post_thumbnail_id($p->ID),
                 "is_poster" => true
