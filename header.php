@@ -57,7 +57,7 @@ if(is_archive()) {
 }
 
 ?>
-<?php $excerpt = is_front_page()? get_post_custom($post->ID)["homepage_copy"][0] : str_replace("[&hellip;]","",get_the_excerpt()); ?>
+<?php $excerpt =  str_replace("[&hellip;]","",get_the_excerpt()); ?>
 
 <link rel="canonical" href="<?= wp_get_canonical_url();?>" />
 <title><?=  $page_header;?></title>
@@ -112,7 +112,7 @@ document.querySelector("head").appendChild(st);
 <a href="#main" class="skip-content no-underline font-sans after-block">Skip to content</a>
 
 <header class="header">
-    <a href="<?=get_home_url();?>" class="header-spinner before-block header__center normal-hover" aria-hidden=true></a>
+    <a href="<?=get_home_url();?>" class="header-spinner before-block header__center normal-hover" aria-label="Go to homepage"></a>
     
 
     <?php $nav = wp_get_nav_menu_items('Main Menu');?>
@@ -169,11 +169,11 @@ function set_active_state($n,$c) {
     
     
     
-    <button aria-hidden=true class="header-mob-toggle header__center before-block after-block"> 
-        <span data-state="closed" class="header-mob-toggle-icon header-mob-toggle-icon--active middle-center">
+    <button aria-label="Open Menu" class="header-mob-toggle header__center before-block after-block"> 
+        <span aria-hidden=true data-state="closed" class="header-mob-toggle-icon header-mob-toggle-icon--active middle-center">
             <?php include "assets/svgs/menu.svg" ?>
         </span>
-        <span data-state="opened" class="header-mob-toggle-icon  middle-center ">
+        <span data-state="opened" aria-hidden=true class="header-mob-toggle-icon  middle-center ">
             <?php include "assets/svgs/cancel.svg"?>
         </span>
     </button>

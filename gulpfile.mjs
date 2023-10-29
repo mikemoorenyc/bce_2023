@@ -43,9 +43,10 @@ const templates = () => {
         
 }
 const assetMove = () => {
-    return src(["./assets/**/*","./dom_parser/**/*"], {base:"."})
+    return src(["./assets/**/*","./dom_parser/**/*"].concat(isProd?[".htaccess"]:[]), {base:"."})
     .pipe(dest(config.directory))
 }
+
 
 const js = (done) => {
     const entries = ["front-end-entry.js","back-end-entry.jsx"]
