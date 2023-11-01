@@ -10,9 +10,17 @@ $copy_area_video = function($block_content,$block) {
     $video = $dom->querySelector("video");
     $fig = $dom->querySelector("figure");
     $attr_string = "";
+    $html_attrs = [];
+ 
+    $html_attrs["width"] = $attrs["width"];
+    $html_attrs["height"] = $attrs["height"];
+    
     foreach ($video->attributes as $attr) {
-
-        $attr_string .= $attr->nodeName.($attr->nodeValue? "=". $attr->nodeValue." ": " "); 
+        $html_attrs[$attr->nodeName] = $attr->nodeValue;
+       // $attr_string .= $attr->nodeName.($attr->nodeValue? "=". $attr->nodeValue." ": " "); 
+    }
+    if(!$html_attrs["poster"]) {
+        $html_attrs["poster"] = get_template_directory_uri()."/assets/svgs/video.svg";
     }
     if(str_contains($fig->getAttribute("class"),"mw-")) {
         $sp = explode(" ",$fig->getAttribute("class"));
@@ -29,6 +37,8 @@ $copy_area_video = function($block_content,$block) {
 
     $type = $attrs["mime_type"];
 
+    $attr_string = implode(" ",array_map(fn($a,$k)=>$k."='".$a."'",$html_attrs,array_keys($html_attrs)));
+
     //GET CAPTION
     $caption = $dom->querySelector("figcaption") ?: "";
     if($caption) {
@@ -39,10 +49,10 @@ $copy_area_video = function($block_content,$block) {
     $dom->loadHTML($dun);
     $caption = $dom->querySelector("figcaption");
     $caption = ($caption) ? (string) $caption : "";
-
+    $aspect_ratio = $attrs['width'].'/'.$attrs['height'];
     return "
     <figure class='cai-std-img cai-video lazy-video' data-id='{$id}' data-state='not-initialized'>
-        <span  class='cai-video-shim'  {$attr_string} style='width:100%; max-width: {$width}px' ></span>
+        <span  class='cai-video-shim'  {$attr_string} style='width:100%; max-width: {$width}px; aspect-ratio: {$aspect_ratio}' ></span>
         <div class='layout-thin-box lazy-gradient cai-video-container' style='max-width:{$width}px; position:relative;margin:0 auto;'>
             <img class='cai-video-placeholder' src='{$blank_src}' style='width: 100%; height: 0; padding-top: {$padding_percent}%'/>
         </div>
