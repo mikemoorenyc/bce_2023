@@ -55,6 +55,9 @@ if(is_archive()) {
     
     $page_header = "Things tagged: ". get_queried_object()->name ." - ".get_bloginfo("name")." - ".get_bloginfo("description");
 }
+if(is_404()) {
+    $page_header = "404";
+}
 
 ?>
 <?php $excerpt =  str_replace("[&hellip;]","",get_the_excerpt()); ?>
@@ -138,6 +141,9 @@ if($type == "projects") {
 if($type == "post") {
     $active_slug = "blog";
 }
+if(is_404()) {
+    $active_slug = "404";
+}
 function set_active_state($n,$c) {
     global $active_slug;
     // $n->ID, '_menu_item_object_id', true )
@@ -155,7 +161,7 @@ function set_active_state($n,$c) {
 
 
             <?php $active_state =  (get_permalink($post->ID) == $n->url)?>
-            <li data-slug=<?=$post->post_name?> class="header-nav-ul-li <?= set_active_state($n,"header-nav-ul-li");?>"><a class="header-nav-ul-li-a <?=set_active_state($n,"header-nav-ul-li-a")?>"  href="<?=$n->url?>"><span><?=$n->title?></span></a></li>
+            <li data-slug='<?=$post->post_name ?: "404"?>' class="header-nav-ul-li <?= set_active_state($n,"header-nav-ul-li");?>"><a class="header-nav-ul-li-a <?=set_active_state($n,"header-nav-ul-li-a")?>"  href="<?=$n->url?>"><span><?=$n->title?></span></a></li>
             <?php
         ?>
 
