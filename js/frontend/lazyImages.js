@@ -1,5 +1,5 @@
 const loadImage = (i) => {
-
+return ;
     const container = i.parentNode;
     const holdingImg = i.querySelector("img");
     const newImg = document.createElement("img");

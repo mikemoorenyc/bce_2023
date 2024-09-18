@@ -52,9 +52,9 @@ $copy_area_video = function($block_content,$block) {
     $aspect_ratio = $attrs['width'].'/'.$attrs['height'];
     return "
     <figure class='cai-std-img cai-video lazy-video' data-id='{$id}' data-state='not-initialized'>
-        <span  class='cai-video-shim'  {$attr_string} style='width:100%; max-width: {$width}px; aspect-ratio: {$aspect_ratio}' ></span>
-        <div class='layout-thin-box lazy-gradient cai-video-container' style='max-width:{$width}px; position:relative;margin:0 auto;'>
-            <img class='cai-video-placeholder' src='{$blank_src}' style='width: 100%; height: 0; padding-top: {$padding_percent}%'/>
+    
+        <div  class='layout-thin-box lazy-gradient cai-video-container' style='max-width:{$width}px; position:relative;margin:0 auto;'>
+            <video {$attr_string} loading='lazy' style='width:100%; max-width: {$width}px; aspect-ratio: {$aspect_ratio}' />
         </div>
         {$caption}
     </figure>

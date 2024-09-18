@@ -7,7 +7,18 @@ $spacer_padding = (($data["height"]/$data["width"]) * 100)."%";
 $max_width_style = $is_poster?"": "max-width:".$mx."px;";
 
 ?>
-<div 
+<picture>
+    <img 
+        loading="lazy"
+        alt="<?=$optional_alt?:get_post_meta($id, '_wp_attachment_image_alt', TRUE);?>" 
+        src="<?=wp_get_attachment_image_src($id)[0];?>"
+        srcset="<?= wp_get_attachment_image_srcset($id);?>" 
+        class="lazy-img <?= $is_poster? "layout-poster-img" : "lazy-img-fake ".$extra_classes ?> lazy-gradient" 
+        style="<?=$max_width_style?>"
+    />
+
+</picture>
+<!--<div 
     data-state="not-initialized"
     class="lazy-img <?= $is_poster? "layout-poster-img" : "lazy-img-fake ".$extra_classes ?> lazy-gradient" 
     style="<?=$max_width_style?>"
@@ -27,3 +38,4 @@ $max_width_style = $is_poster?"": "max-width:".$mx."px;";
         />
         
     </div>
+-->

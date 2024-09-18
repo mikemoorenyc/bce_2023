@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "vb/vb",
+  "version": "0.1.0",
+  "title": "Vison Board",
+  "category": "text",
+  "icon": "flag",
+  "description": "Block to display vision board properly",
+  "attributes": {
+    "productVision": {
+      "label": "Product Vision",
+      "type": "string",
+     
+      "defaultValue": "ddfaasdf"
+    },
+    "targetGroup": {
+      "label": "Target Group",
+      "type": "string",
+    
+      "defaultValue": "ddfaasdf"
+    },
+    "needs": {
+      "label": "Needs",
+      "type": "string",
+    
+      "defaultValue": "ddfaasdf"
+    },
+    "product": {
+      "label": "Product",
+      "type": "string",
+     
+      "defaultValue": "ddfaasdf"
+    },
+    "businessGoals": {
+      "label": "Business Goals",
+      "type": "string",
+     
+      "defaultValue": "ddfaasdf"
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "visionboard",
+  "render":"file: ../components/vb_render.php"
+}

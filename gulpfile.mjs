@@ -49,7 +49,7 @@ const assetMove = () => {
 
 
 const js = (done) => {
-    const entries = ["front-end-entry.js","back-end-entry.jsx"]
+    const entries = ["front-end-entry.js","back-end-entry.jsx", "vbBlock.jsx"]
     entries.forEach((e,i)=> {
         return src(`./js/${e}`)
             
@@ -68,7 +68,7 @@ const js = (done) => {
                                 loader: "babel-loader",
                                 options: {
                                     presets: ["@babel/preset-react", "@babel/preset-env"],
-                                    plugins:i==1 ?null: [
+                                    plugins:i>1 ?null: [
                                         ["@babel/plugin-transform-react-jsx", {
                                             "pragma": "h",
                                             "pragmaFrag": "Fragment"
@@ -80,12 +80,13 @@ const js = (done) => {
                     ]
                 },
                 "resolve": { 
-                    "alias": i==1 ?{}:{ 
+                    "alias": i>0 ?{}:{ 
                       "react": "preact/compat",
                       "react-dom/test-utils": "preact/test-utils",
                       "react-dom": "preact/compat",     // Must be below test-utils
                       "react/jsx-runtime": "preact/jsx-runtime"
                     },
+                    "extensions":  [".js", ".ts",".jsx",".tsx"]
                 },
                 "externals": {
                     wp: "wp",
